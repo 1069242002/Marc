@@ -35,8 +35,9 @@
 
         .star {
             position: absolute;
-            width: 2px;
-            height: 2px;
+            width: 4px;
+            height: 4px;
+            background: #f1c40f;
             animation: twinkle 1s infinite alternate;
         }
 
@@ -56,6 +57,7 @@
             color: #e74c3c;
             font-size: 5rem;
             animation: heartbeat 1.5s infinite alternate ease-in-out;
+            opacity: 1;
         }
 
         @keyframes heartbeat {
@@ -115,6 +117,16 @@
                 star.style.left = `${Math.random() * 100}%`;
                 space.appendChild(star);
             }
+        });
+
+        // Desaparece o coração quando o texto aparece
+        document.addEventListener("DOMContentLoaded", function() {
+            const heart = document.querySelector(".heart");
+            const textContainer = document.querySelector(".text-container");
+
+            textContainer.addEventListener("animationstart", function() {
+                heart.style.opacity = 0;
+            });
         });
     </script>
 </body>
